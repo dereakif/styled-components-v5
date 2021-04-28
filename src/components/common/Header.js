@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link as DLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
@@ -10,19 +10,41 @@ const HeaderWrapper = styled.header`
   padding: 0 16px;
   position: fixed;
   top: 0;
-  background-color: #eeeeee;
+  background: #c0392b; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #8e44ad,
+    #c0392b
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #8e44ad,
+    #c0392b
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-bottom: 3px solid #c0392b;
 `;
 
 const Menu = styled.nav`
-  display: flex;
-  position: relative;
-  width: initial;
-  border-bottom: none;
-  margin: auto 0 auto auto;
+  display: ${(props) => (props.open ? "block" : "none")};
   font-family: "Open Sans";
-  background: none;
-  left: initial;
-  top: initial;
+  position: absolute;
+  width: 100%;
+  top: 60px;
+  left: 0;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: white;
+  border-bottom: 3px solid #c0392b;
+  @media (min-width: 768px) {
+    display: flex;
+    position: relative;
+    width: initial;
+    border-bottom: none;
+    margin: auto 0 auto auto;
+    background: none;
+    left: initial;
+    top: initial;
+  }
 `;
 
 const Link = ({ isActive, children, ...props }) => {
@@ -35,14 +57,36 @@ const StyledLink = styled(Link)`
   text-align: center;
   box-sizing: border-box;
   margin: auto 0;
+  color: black;
   font-weight: ${(props) => (props.isActive ? 800 : 400)};
+`;
+const MobileMenuIcon = styled.div`
+  margin: auto 0 auto auto;
+  width: 25px;
+  min-width: 25px;
+  padding: 5px;
+  > div {
+    height: 3px;
+    background: black;
+    margin: 5px 0;
+    width: 100%;
+  }
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 export function Header() {
   const { pathname } = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <HeaderWrapper>
-      <Menu>
+      <MobileMenuIcon onClick={() => setMenuOpen((s) => !s)}>
+        <div />
+        <div />
+        <div />
+      </MobileMenuIcon>
+      <Menu open={menuOpen}>
         <StyledLink isActive={pathname === "/"} to="/">
           Home
         </StyledLink>
