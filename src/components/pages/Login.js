@@ -1,4 +1,5 @@
 import { PageLayout, Input } from "components/common";
+import PasswordInput from "components/common/PasswordInput";
 import React, { useState } from "react";
 import styled from "styled-components";
 
@@ -15,14 +16,12 @@ const Form = styled.form`
 
 function Login() {
   const [formFields, setFormFields] = useState({ username: "", password: "" });
-  const [showPassword, setShowPassword] = useState(false);
+
   function handleInputChange(e) {
     e.persist();
     setFormFields((s) => ({ ...s, [e.target.name]: e.target.value }));
   }
-  function passwordToggler() {
-    setShowPassword((s) => !s);
-  }
+
   return (
     <PageLayout>
       <h1>Login</h1>
@@ -34,15 +33,12 @@ function Login() {
           type="text"
           placeholder="username"
         />
-        <Input
+        <PasswordInput
           value={formFields.password}
           onChange={handleInputChange}
           name="password"
-          type={showPassword ? "text" : "password"}
-          placeholder="password"
         />
       </Form>
-      <button onClick={passwordToggler}>passtoggler</button>
     </PageLayout>
   );
 }
