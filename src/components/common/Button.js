@@ -1,11 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Button = styled.button`
   color: white;
-  background: black;
+  background: ${(props) => (props.secondary ? "#c0392b" : "#f8049c")};
+  opacity: ${(props) => props.disabled && "0.5"};
   font-weight: bold;
-  padding: 8px;
-  border-radius: 4px;
+  ${(props) =>
+    props.large
+      ? css`
+          padding: 10px;
+          border-radius: 5px;
+          font-size: 1.5rem;
+        `
+      : css`
+          padding: 8px;
+          border-radius: 4px;
+          font-size: 1rem;
+        `}
   box-shadow: none;
   border: none;
   width: 100%;
