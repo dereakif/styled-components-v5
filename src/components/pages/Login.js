@@ -1,4 +1,4 @@
-import { PageLayout, Input, Button } from "components/common";
+import { PageLayout, Input, Button, Spinner } from "components/common";
 import PasswordInput from "components/common/PasswordInput";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -43,18 +43,24 @@ function Login() {
     <PageLayout>
       <h1>Login</h1>
       <Form onSubmit={handleSubmit}>
-        <Input
-          value={formFields.username}
-          onChange={handleInputChange}
-          name="username"
-          type="text"
-          placeholder="username"
-        />
-        <PasswordInput
-          value={formFields.password}
-          onChange={handleInputChange}
-          name="password"
-        />
+        {!loading ? (
+          <>
+            <Input
+              value={formFields.username}
+              onChange={handleInputChange}
+              name="username"
+              type="text"
+              placeholder="username"
+            />
+            <PasswordInput
+              value={formFields.password}
+              onChange={handleInputChange}
+              name="password"
+            />
+          </>
+        ) : (
+          <Spinner />
+        )}
         <Button large type="submit" disabled={loading}>
           {loading ? "Loading..." : "Login"}
         </Button>
