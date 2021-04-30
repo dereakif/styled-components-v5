@@ -16,6 +16,12 @@ const Form = styled.form`
     text-align: center;
     margin: 5px 0;
   }
+  > ${Button}:first-of-type {
+    margin-top: 40px;
+  }
+  > ${Input} {
+    margin-top: 20px;
+  }
 `;
 
 let timeout;
@@ -45,6 +51,7 @@ function Login() {
       <Form onSubmit={handleSubmit}>
         {!loading ? (
           <>
+            <span>Login if you have account</span>
             <Input
               value={formFields.username}
               onChange={handleInputChange}
