@@ -10,18 +10,17 @@ const HeaderWrapper = styled.header`
   padding: 0 16px;
   position: fixed;
   top: 0;
-  background: #c0392b; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #8e44ad,
-    #c0392b
+    ${(props) => props.theme.primaryColor},
+    ${(props) => props.theme.secondaryColor}
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    #8e44ad,
-    #c0392b
+    ${(props) => props.theme.primaryColor},
+    ${(props) => props.theme.secondaryColor}
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  border-bottom: 3px solid #c0392b;
+  border-bottom: 3px solid ${(props) => props.theme.secondaryColor};
 `;
 
 const Menu = styled.nav`
@@ -34,7 +33,7 @@ const Menu = styled.nav`
   padding: 8px;
   box-sizing: border-box;
   background-color: white;
-  border-bottom: 3px solid #c0392b;
+  border-bottom: 3px solid ${(props) => props.theme.secondaryColor};
   @media (min-width: 768px) {
     display: flex;
     position: relative;
