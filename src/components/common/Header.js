@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link as DLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import Toggle from "./Toggle";
 
 const HeaderWrapper = styled.header`
   height: 60px;
@@ -92,6 +93,7 @@ export function Header() {
         <StyledLink isActive={pathname === "/login"} to="/login">
           Login
         </StyledLink>
+        <Toggle />
       </Menu>
     </HeaderWrapper>
   );
