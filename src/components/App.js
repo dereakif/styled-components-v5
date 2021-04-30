@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "components/pages/Login";
 import Home from "components/pages/Home";
 import "../App.css";
+import { useState } from "react";
 const GlobalStyle = createGlobalStyle`
 body{
   background:white;
@@ -16,8 +17,16 @@ body{
 `;
 
 function App() {
+  const [theme, setTheme] = useState(LightTheme);
   return (
-    <ThemeProvider theme={LightTheme}>
+    <ThemeProvider
+      theme={{
+        ...theme,
+        setTheme: () => {
+          setTheme((s) => (s.id === "light" ? DarkTheme : LightTheme));
+        },
+      }}
+    >
       <GlobalStyle />
       <BrowserRouter>
         <Switch>
