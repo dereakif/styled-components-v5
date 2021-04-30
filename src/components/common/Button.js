@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import PropTypes from "prop-types";
 const largeStyles = ({ large }) => {
   if (large) {
     return css`
@@ -7,7 +8,7 @@ const largeStyles = ({ large }) => {
       font-size: 1.5rem;
     `;
   } else {
-    css`
+    return css`
       padding: 8px;
       border-radius: 4px;
       font-size: 1rem;
@@ -27,3 +28,7 @@ export const Button = styled.button`
   display: block;
   white-space: none;
 `;
+Button.propTypes = {
+  large: PropTypes.bool,
+  secondary: PropTypes.bool,
+};
