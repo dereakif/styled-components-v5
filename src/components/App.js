@@ -1,9 +1,10 @@
-import "../App.css";
-
+import LightTheme from "../themes/light";
+import DarkTheme from "../themes/dark";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "components/pages/Login";
 import Home from "components/pages/Home";
+import "../App.css";
 const GlobalStyle = createGlobalStyle`
 body{
   background:white;
@@ -13,14 +14,10 @@ body{
   font-family:'Kaushan Script';
 }
 `;
-const theme = {
-  primaryColor: "#8e44ad",
-  secondaryColor: "#c0392b",
-};
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={LightTheme}>
       <GlobalStyle />
       <BrowserRouter>
         <Switch>
