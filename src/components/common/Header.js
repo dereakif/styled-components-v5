@@ -33,7 +33,7 @@ const Menu = styled.nav`
   left: 0;
   padding: 8px;
   box-sizing: border-box;
-  background-color: white;
+  background: ${(p) => p.theme.bodyBackgroundColor};
   border-bottom: 3px solid ${(props) => props.theme.secondaryColor};
   @media (min-width: 768px) {
     display: flex;
@@ -57,7 +57,7 @@ const StyledLink = styled(Link)`
   text-align: center;
   box-sizing: border-box;
   margin: auto 0;
-  color: black;
+  color: ${(p) => p.theme.bodyFontColor};
   font-weight: ${(props) => (props.isActive ? 800 : 400)};
 `;
 const MobileMenuIcon = styled.div`
@@ -67,7 +67,7 @@ const MobileMenuIcon = styled.div`
   padding: 5px;
   > div {
     height: 3px;
-    background: black;
+    background: ${(p) => p.theme.bodyFontColor};
     margin: 5px 0;
     width: 100%;
   }
